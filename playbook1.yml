@@ -3,7 +3,7 @@
   become: true
   become_user: root
   vars:
-   repo_path: https://github.com/Sonal0409/AnsibleDockerdemo.git
+   repo_path: https://github.com/Imran-shaik6/AnsibleDockerdemo.git
    dest_path: /tmp/gitrepo
   tasks:
   - name: Install multiple packages on host server
