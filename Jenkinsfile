@@ -8,6 +8,50 @@ pipeline{
     
     stages{
         
+        stage ('CloneRepo')
+        {
+            steps{
+             echo 'This is stage 1'
+              git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'  
+            }
+        }
+        
+        stage ('Compile')
+        {
+            steps{
+                
+             sh  'mvn compile'
+                
+            }
+        }
+        stage ('CodeReview')
+        {
+            steps{
+                
+             sh  'mvn pmd:pmd'
+                
+            }
+            post{
+                success{
+                    recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
+                }
+            }
+        }
+        stage ('Test')
+        {
+            steps{
+                
+             sh  'mvn test'
+                
+            }
+        post{
+            success{
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+        }
+        
+        
       stage('build the code'){
           steps{
               git 'https://github.com/Imran-shaik6/DevOpsCodeDemo.git'
