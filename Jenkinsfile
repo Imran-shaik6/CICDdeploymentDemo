@@ -12,7 +12,7 @@ pipeline{
         {
             steps{
              echo 'This is stage 1'
-              git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'  
+              git 'https://github.com/Imran-shaik6/DevOpsCodeDemo.git'  
             }
         }
         
@@ -54,7 +54,7 @@ pipeline{
         
       stage('build the code'){
           steps{
-              git 'https://github.com/Imran-shaik6/DevOpsCodeDemo.git'
+           
               sh 'mvn package'
           }
       }
